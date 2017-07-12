@@ -1,0 +1,2 @@
+class StoredProduct < ApplicationRecord
+end
