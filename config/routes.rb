@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :sub_tags
+  resources :tags
+  resources :reviews
+  resources :rights_holders
+  resources :creators
   resources :stored_products
   devise_for :users
   mount ShopifyApp::Engine, at: '/'

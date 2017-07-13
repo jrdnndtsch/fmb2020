@@ -25,6 +25,3 @@ Things you may want to cover:
 
 lt --port 3000 --subdomain kujmssnuai 
 
-# fbm2020-app
-# fmb2020
-# fmb2020

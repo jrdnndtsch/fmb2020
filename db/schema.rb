@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711223243) do
+ActiveRecord::Schema.define(version: 20170712153038) do
+
+  create_table "creators", force: :cascade do |t|
+    t.string   "creator_type"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "bio"
+    t.integer  "stored_product_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["stored_product_id"], name: "index_creators_on_stored_product_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "quote"
+    t.string   "citation"
+    t.string   "publication"
+    t.integer  "stored_product_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["stored_product_id"], name: "index_reviews_on_stored_product_id"
+  end
+
+  create_table "rights_holders", force: :cascade do |t|
+    t.string   "name"
+    t.string   "website"
+    t.string   "email"
+    t.integer  "stored_product_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["stored_product_id"], name: "index_rights_holders_on_stored_product_id"
+  end
 
   create_table "shops", force: :cascade do |t|
     t.string   "shopify_domain", null: false
@@ -29,6 +60,22 @@ ActiveRecord::Schema.define(version: 20170711223243) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.boolean  "posted",       default: false
+  end
+
+  create_table "sub_tags", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_sub_tags_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "stored_product_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["stored_product_id"], name: "index_tags_on_stored_product_id"
   end
 
   create_table "users", force: :cascade do |t|

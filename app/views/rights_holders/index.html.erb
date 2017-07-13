@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rights Holders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Website</th>
+      <th>Email</th>
+      <th>Stored product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rights_holders.each do |rights_holder| %>
+      <tr>
+        <td><%= rights_holder.name %></td>
+        <td><%= rights_holder.website %></td>
+        <td><%= rights_holder.email %></td>
+        <td><%= rights_holder.stored_product %></td>
+        <td><%= link_to 'Show', rights_holder %></td>
+        <td><%= link_to 'Edit', edit_rights_holder_path(rights_holder) %></td>
+        <td><%= link_to 'Destroy', rights_holder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rights Holder', new_rights_holder_path %>

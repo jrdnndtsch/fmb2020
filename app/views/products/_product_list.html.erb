@@ -1,3 +1,21 @@
-<% @products.each do |p|%>
-  <li><%= p.title%></li>
-<% end %>
+<ul class="list list--products card">
+  <% @products.each do |product| %>
+    <li>
+    	<span><%= product.title%></span>
+    	<span><%= product.vendor%></span>
+    	<span>
+	    	<% if product.published_at.present? %>
+	    		true
+	    	<% else %>	
+	    		false
+	    	<% end %>	
+    	</span>
+    	<span>
+    		<%= link_to 'edit', "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top", class: 'button--secondary' %>
+    	</span>
+    	<span>
+    		<%= Date.parse(product.created_at) %>
+    	</span>
+    </li>
+  <% end %>
+</ul>

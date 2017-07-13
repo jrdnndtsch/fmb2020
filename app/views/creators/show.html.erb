@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @creator.type %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @creator.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @creator.last_name %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @creator.bio %>
+</p>
+
+<p>
+  <strong>Stored product:</strong>
+  <%= @creator.stored_product %>
+</p>
+
+<%= link_to 'Edit', edit_creator_path(@creator) %> |
+<%= link_to 'Back', creators_path %>
