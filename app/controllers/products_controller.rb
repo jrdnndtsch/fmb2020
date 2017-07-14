@@ -11,12 +11,22 @@ class ProductsController < ShopifyApp::AuthenticatedController
 		
 		StoredProduct.all.each do |c|
 			if !c.posted
+				tags = ''
+				c.tags.each do |tag|
+					tags = tags +','+ tag.name
+					tag.sub_tags.each do |sub_tag|
+						tag = sub_tag.tag.name
+						sub = tag +'-'+ sub_tag.name
+						tags = tags +','+ sub
+					end	
+				end 	
 				products_hash = {}
 			  products_hash['title'] = c.title
 			  products_hash['body_html'] = c.body_html
 			  products_hash['vendor'] = c.vendor
 			  products_hash['product_type'] = c.product_type
 			  products_hash['published'] = c.published
+			  products_hash['tags'] = tags
 			  request = HTTParty.post(
 			  	base_uri,
 			  	:body => {

@@ -7,27 +7,6 @@ class StoredProductsController < ShopifyApp::AuthenticatedController
     @stored_products = StoredProduct.all
   end
 
-  def self.post_products
-    require 'HTTParty'
-    headers = {'X-Shopify-Access-Token' => @shop_session.token, 'Content-Type' => 'application/json'}
-    base_uri = 'https://fbm2020-dev.myshopify.com/admin/products.json'
-    
-    StoredProduct.all.each do |c|
-      products_hash = {}
-      products_hash['title'] = c.title
-      products_hash['body_html'] = c.body_html
-      products_hash['vendor'] = c.vendor
-      products_hash['product_type'] = c.product_type
-      products_hash['published'] = c.published
-      request = HTTParty.post(
-        base_uri,
-        :body => {
-          :product => products_hash
-        }.to_json,
-        :headers => headers
-      )
-    end
-  end
 
   # GET /stored_products/1
   # GET /stored_products/1.json
@@ -50,26 +29,6 @@ class StoredProductsController < ShopifyApp::AuthenticatedController
 
     respond_to do |format|
       if @stored_product.save
-        require 'HTTParty'
-        headers = {'X-Shopify-Access-Token' => @shop_session.token, 'Content-Type' => 'application/json'}
-        base_uri = 'https://fbm2020-dev.myshopify.com/admin/products.json'
-        
-        StoredProduct.all.each do |c|
-          products_hash = {}
-          products_hash['title'] = c.title
-          products_hash['body_html'] = c.body_html
-          products_hash['vendor'] = c.vendor
-          products_hash['product_type'] = c.product_type
-          products_hash['published'] = c.published
-          request = HTTParty.post(
-            base_uri,
-            :body => {
-              :product => products_hash
-            }.to_json,
-            :headers => headers
-          )
-          
-        end
         format.html { redirect_to @stored_product, notice: 'Stored product was successfully created.' }
         format.json { render :show, status: :created, location: @stored_product }
       else

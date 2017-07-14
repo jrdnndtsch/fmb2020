@@ -7,12 +7,35 @@ module Api
 
     	end
     	def create
-				if @product.present?
+			if @product.present?
 		      render nothing: true, status: :conflict
 		    else
-		      @product = StoredProduct.new
-		      @product.assign_attributes(title: params['product']['title'])
-		      if @product.save
+          #create new stored product
+          @product = StoredProduct.new
+          product_hash =  params['product']['product'].permit([:title, :body_html, :vendor, :product_type, :published]).to_h
+          @product.assign_attributes(product_hash)
+
+          # make a hash for each table and create with the prod
+          rights_holder_hash = params['product']['vendor'].permit([:name, :website, :email]).to_h
+          @product.rights_holders.new(rights_holder_hash)
+          
+          params['product']['review'].each do |review|
+            review_hash = params['product']['review'][review].permit([:quote, :citation, :publication]).to_h
+            @product.reviews.new(review_hash)
+          end 
+          params['product']['creator'].each do |creator|
+            creator_hash = params['product']['creator'][creator].permit([:creator_type, :first_name, :last_name]).to_h
+            @product.creators.new(creator_hash)
+          end
+          params['product']['tags'].each do |tag|
+            @tag = @product.tags.new(name: tag)
+            params['product']['tags'][tag]['sub_tags'].each do |sub|  
+              @tag.sub_tags.new(name: sub)
+            end  
+          end
+          
+    
+          if @product.save
 		        render json: @product
 		      else
 		         render nothing: true, status: :bad_request

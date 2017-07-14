@@ -1,4 +1,4 @@
 class Tag < ApplicationRecord
   belongs_to :stored_product
-  has_many :sub_tags
+  has_many :sub_tags, dependent: :destroy
 end
