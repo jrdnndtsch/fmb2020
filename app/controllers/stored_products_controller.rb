@@ -70,6 +70,6 @@ class StoredProductsController < ShopifyApp::AuthenticatedController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stored_product_params
-      params.require(:stored_product).permit(:title, :body_html, :vendor, :product_type, :published)
+      params.require(:stored_product).permit(:title, :body_html, :vendor, :product_type, :published, :featured_image)
     end
 end

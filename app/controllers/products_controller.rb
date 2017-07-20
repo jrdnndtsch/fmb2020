@@ -12,6 +12,9 @@ class ProductsController < ShopifyApp::AuthenticatedController
 		StoredProduct.all.each do |c|
 			if !c.posted
 				tags = ''
+				metafields = []
+
+				#create tags
 				c.tags.each do |tag|
 					tags = tags +','+ tag.name
 					tag.sub_tags.each do |sub_tag|
@@ -19,7 +22,26 @@ class ProductsController < ShopifyApp::AuthenticatedController
 						sub = tag +'-'+ sub_tag.name
 						tags = tags +','+ sub
 					end	
-				end 	
+				end 
+
+				c.creators.each do |p|
+					name = p.first_name + ' ' + p.last_name
+					creator_data =  {"key" => name, "value" => name, "value_type" => "string", "namespace" => p.creator_type}
+					metafields.push(creator_data)
+				end 
+
+				c.reviews.each do |r|
+					if r.publication.present?
+						quote = r.quote + '[[' + r.citation + ']]'
+						review_data = {"key" => r.publication, "value" => quote, "value_type" => "string", "namespace" => "reviews"}
+						metafields.push(review_data)
+					end
+
+				end 
+
+				puts metafields
+
+
 				products_hash = {}
 			  products_hash['title'] = c.title
 			  products_hash['body_html'] = c.body_html
@@ -27,6 +49,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  products_hash['product_type'] = c.product_type
 			  products_hash['published'] = c.published
 			  products_hash['tags'] = tags
+			  products_hash['metafields'] = metafields
 			  request = HTTParty.post(
 			  	base_uri,
 			  	:body => {

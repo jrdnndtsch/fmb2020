@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712153038) do
+ActiveRecord::Schema.define(version: 20170720001921) do
 
   create_table "creators", force: :cascade do |t|
     t.string   "creator_type"
@@ -56,10 +56,14 @@ ActiveRecord::Schema.define(version: 20170712153038) do
     t.string   "body_html"
     t.string   "vendor"
     t.string   "product_type"
-    t.boolean  "published",    default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.boolean  "posted",       default: false
+    t.boolean  "published",                   default: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.boolean  "posted",                      default: false
+    t.string   "featured_image_file_name"
+    t.string   "featured_image_content_type"
+    t.integer  "featured_image_file_size"
+    t.datetime "featured_image_updated_at"
   end
 
   create_table "sub_tags", force: :cascade do |t|
