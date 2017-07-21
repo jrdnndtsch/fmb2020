@@ -39,9 +39,9 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 				end 
 
-				puts metafields
 
-
+				featured_image_src = "https:" + c.featured_image.url(:header)
+				vendor_logo_src = "https:" + c.vendor_logo.url(:header)
 				products_hash = {}
 			  products_hash['title'] = c.title
 			  products_hash['body_html'] = c.body_html
@@ -50,6 +50,8 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  products_hash['published'] = c.published
 			  products_hash['tags'] = tags
 			  products_hash['metafields'] = metafields
+			  products_hash['images'] = [{ "src" => featured_image_src}, {"src" => vendor_logo_src}]
+				puts products_hash
 			  request = HTTParty.post(
 			  	base_uri,
 			  	:body => {

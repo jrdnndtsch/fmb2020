@@ -36,10 +36,10 @@ module Api
               end  
             end
           end
-          if params['file']
+          if params['featured_image'] && params['vendor_logo']
             puts params
             @product = StoredProduct.find(params['id'])
-            @product.update(featured_image: params['file'])
+            @product.update(featured_image: params['featured_image'], vendor_logo: params['vendor_logo'])
           end
           
           if @product.save
