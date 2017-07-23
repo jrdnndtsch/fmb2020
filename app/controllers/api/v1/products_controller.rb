@@ -13,7 +13,7 @@ module Api
           if params['product']
             #create new stored product
             @product = StoredProduct.new
-            product_hash =  params['product']['product'].permit([:title, :body_html, :vendor, :product_type, :published, :featured_image]).to_h
+            product_hash =  params['product']['product'].permit([:title, :body_html, :vendor, :product_type, :published, :featured_image, :age_range_start, :age_range_end, :publication_date, :publication_location, :rights_sold, :page_number]).to_h
             puts product_hash
             
             @product.assign_attributes(product_hash)
@@ -26,7 +26,7 @@ module Api
               @product.reviews.new(review_hash)
             end 
             params['product']['creator'].each do |creator|
-              creator_hash = params['product']['creator'][creator].permit([:creator_type, :first_name, :last_name]).to_h
+              creator_hash = params['product']['creator'][creator].permit([:creator_type, :first_name, :last_name, :bio]).to_h
               @product.creators.new(creator_hash)
             end
             params['product']['tags'].each do |tag|

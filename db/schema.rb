@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721212220) do
+ActiveRecord::Schema.define(version: 20170723184426) do
 
   create_table "creators", force: :cascade do |t|
     t.string   "creator_type"
@@ -68,6 +68,12 @@ ActiveRecord::Schema.define(version: 20170721212220) do
     t.string   "vendor_logo_content_type"
     t.integer  "vendor_logo_file_size"
     t.datetime "vendor_logo_updated_at"
+    t.integer  "page_number"
+    t.datetime "publication_date"
+    t.string   "publication_location"
+    t.boolean  "rights_sold",                 default: false
+    t.integer  "age_range_start"
+    t.integer  "age_range_end"
   end
 
   create_table "sub_tags", force: :cascade do |t|

@@ -26,7 +26,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 				c.creators.each do |p|
 					name = p.first_name + ' ' + p.last_name
-					creator_data =  {"key" => name, "value" => name, "value_type" => "string", "namespace" => p.creator_type}
+					creator_data =  {"key" => name, "value" => p.bio, "value_type" => "string", "namespace" => p.creator_type}
 					metafields.push(creator_data)
 				end 
 
@@ -36,8 +36,16 @@ class ProductsController < ShopifyApp::AuthenticatedController
 						review_data = {"key" => r.publication, "value" => quote, "value_type" => "string", "namespace" => "reviews"}
 						metafields.push(review_data)
 					end
-
 				end 
+
+				book_data = [
+					{
+						"key" => "pages", 
+						"value" => c.page_number, 
+						"value_type" => "integer", 
+						"namespace" => "book_data"
+					}
+				]
 
 
 				featured_image_src = "https:" + c.featured_image.url(:header)
@@ -63,6 +71,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  case request.code
 			    when 201
 			  		c.update(posted: true)
+			  		puts "#{c.title} was posted!"
 			    when 404
 			      puts "O noes not found!"
 			    when 500...600
