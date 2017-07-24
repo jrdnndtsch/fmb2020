@@ -38,14 +38,20 @@ class ProductsController < ShopifyApp::AuthenticatedController
 					end
 				end 
 
-				book_data = [
-					{
-						"key" => "pages", 
-						"value" => c.page_number, 
-						"value_type" => "integer", 
-						"namespace" => "book_data"
-					}
-				]
+				c.rights_holders.each do |r|
+					rights_name = {"key" => "name", "value" => r.name, "value_type" => "string", "namespace" => "rights_holder"}
+					rights_email = {"key" => "email", "value" => r.email, "value_type" => "string", "namespace" => "rights_holder"}
+					rights_website = {"key" => "website", "value" => r.website, "value_type" => "string", "namespace" => "rights_holder"}
+					metafields.push(rights_name, rights_email, rights_website)
+				end 	
+
+				metafields << {"key" => "pages", "value" => c.page_number, "value_type" => "integer", "namespace" => "book_data" }
+				metafields << {"key" => "publication_date", "value" => c.publication_date.strftime("%m/%d/%Y"), "value_type" => "string", "namespace" => "book_data"} 
+				metafields << {"key" => "publication_location", "value" => c.publication_location, "value_type" => "string", "namespace" => "book_data"} 
+				metafields << {"key" => "rights_sold", "value" => c.rights_sold, "value_type" => "string", "namespace" => "book_data"} 
+				metafields << {"key" => "age_range_start", "value" => c.age_range_start, "value_type" => "integer", "namespace" => "book_data"} 
+				metafields << {"key" => "age_range_end", "value" => c.age_range_end, "value_type" => "integer", "namespace" => "book_data"}
+				
 
 
 				featured_image_src = "https:" + c.featured_image.url(:header)
