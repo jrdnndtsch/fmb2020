@@ -1,7 +1,7 @@
 class ProductsController < ShopifyApp::AuthenticatedController
 	# before_action :authenticate_user!
 	def index
-		@products = ShopifyAPI::Product.find(:all, params: { limit: 10 }
+		@products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
 	end
 	def create
 		require 'HTTParty'
