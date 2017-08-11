@@ -4,7 +4,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 		@products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
 	end
 	def create
-		require 'HTTParty'
+		require 'httparty'
 		headers = {'X-Shopify-Access-Token' => @shop_session.token, 'Content-Type' => 'application/json'}
 		base_uri = 'https://fbm2020-dev.myshopify.com/admin/products.json'
 		
