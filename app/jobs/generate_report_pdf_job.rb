@@ -4,17 +4,9 @@ class GenerateReportPdfJob < ApplicationJob
   def perform(*args)
     # Do something later
     items = args[0][:items]
-    puts 'generating report'
-    # items = JSON.parse(params[:items])
-    items.each do |item|
-    	puts item['product_title']
-    	puts item['image']
-    end
 
-    # Do something later
     @report = @report = Report.find args[0][:report_id]
 
-    puts args
     # create an instance of ActionView, so we can use the render method outside of a controller
     av = ActionView::Base.new()
     av.view_paths = ActionController::Base.view_paths
@@ -45,7 +37,8 @@ class GenerateReportPdfJob < ApplicationJob
 
     # The report has now been saved elsewhere using Paperclip; we don't need to store it locally
     File.delete(pdf_path) if File.exist?(pdf_path)
-    # head :ok
+
+    # email the report
     ReportPdfMailer.send_mail(@report.id).deliver
   end
 end
