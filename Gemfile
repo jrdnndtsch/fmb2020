@@ -46,6 +46,8 @@ gem 'httparty'
 gem 'paperclip'
 gem 'aws-sdk'
 
+gem 'render_anywhere', :require => false
+
 
 # pdf generation
 gem 'wicked_pdf'
