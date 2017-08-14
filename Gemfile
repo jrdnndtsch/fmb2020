@@ -11,8 +11,6 @@ gem 'simple_token_authentication', '~> 1.0' #for api authentication
 gem 'tunnels'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -48,9 +46,15 @@ gem 'httparty'
 gem 'paperclip'
 gem 'aws-sdk'
 
+
 # pdf generation
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,6 +71,8 @@ group :development do
   gem "better_errors"
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
