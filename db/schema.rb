@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723184426) do
+ActiveRecord::Schema.define(version: 20170814135727) do
 
   create_table "creators", force: :cascade do |t|
     t.string   "creator_type"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20170723184426) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["stored_product_id"], name: "index_creators_on_stored_product_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
   end
 
   create_table "reviews", force: :cascade do |t|

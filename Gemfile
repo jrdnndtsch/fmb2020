@@ -46,6 +46,11 @@ gem 'httparty'
 gem 'paperclip'
 gem 'aws-sdk'
 
+
+# pdf generation
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -57,6 +62,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem "letter_opener"
 end
 
 group :development do

@@ -1,0 +1,24 @@
+<h1>Your Catalogue of Books</h1>
+
+
+<% items.each do |item| %>
+	<div class="product">
+		<h2><%= item['product_title'] %></h2>	
+		<%= image_tag item['image']%>
+		<p><%= item['product_description']%></p>
+	</div>
+<% end %>
+
+
+<style>
+	img {
+		max-width: 200px;
+		max-height: 400px;
+	}
+	.product{
+		width: 50%;
+		float: left;
+	}
+
+
+</style>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reports
   resources :sub_tags
   resources :tags
   resources :reviews
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     devise_for :users
     namespace :v1 do
       resources :products
+      post 'generate_report' => 'reports#generate_report'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
