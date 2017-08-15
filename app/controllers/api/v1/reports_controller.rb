@@ -19,8 +19,10 @@ module Api
           include ApplicationHelper
         end
 
+        puts '>>>>>>>>>>>>render template'
         pdf_html = av.render template: 'api/v1/reports/generate_report', layout: 'layouts/pdf', locals: {report: @report, items: items }
 
+        puts '>>>>>>>>>>>>create pdf'
         # use wicked_pdf gem to create PDF from the doc HTML
         doc_pdf = WickedPdf.new.pdf_from_string(
           pdf_html,
@@ -28,19 +30,23 @@ module Api
           javascript_delay: 100
         )
 
+        puts '>>>>>>>>>>>>>>>save to disk'
         # save PDF to disk
         pdf_path = Rails.root.join('tmp/reports', "#{@report.id}_#{Date.today.iso8601}.pdf")
         File.open(pdf_path, 'wb') do |file|
           file << doc_pdf
         end
 
+        puts '>>>>>>>>>>>>>>>>>open and save to report'
         @report.pdf = File.open pdf_path
         @report.save!
 
+        puts '>>>>>>>>>>>>>>>>>delete temp file'
         # The report has now been saved elsewhere using Paperclip; we don't need to store it locally
         File.delete(pdf_path) if File.exist?(pdf_path)
         render json: @report.pdf.url.to_json
 
+        puts '>>>>>>>>>>>>>>>>>email report'
         # email the report
         ReportPdfMailer.send_mail(@report.id).deliver
 
