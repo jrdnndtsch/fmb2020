@@ -84,6 +84,20 @@ Rails.application.configure do
       :bucket => 'fbm2020-dev'
     }
 
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for mailgun
+  ActionMailer::Base.smtp_settings = {
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => 'https://fbm2020-app.herokuapp.com',
+    :authentication => :plain,
+  }
+  ActionMailer::Base.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { :host => 'https://fbm2020-app.herokuapp.com' }
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

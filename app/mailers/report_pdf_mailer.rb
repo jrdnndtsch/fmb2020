@@ -1,7 +1,7 @@
 class ReportPdfMailer < ApplicationMailer
 
 	def send_mail(report_id )
-			puts 'in send mail'
+			puts '>>>>>>>>>>>>>>>>>>>>in send mail'
 	    @report = Report.find(report_id)
 
 	    # ApplicationJob::GeneratePdfJob.perform_now(report_id: @report.id)

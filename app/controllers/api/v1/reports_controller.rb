@@ -6,7 +6,8 @@ module Api
 
 
       def generate_report
-        @report = Report.create!
+        email = params[:email]
+        @report = Report.create!(email: email)
         items = JSON.parse(params[:items])
 
         # create an instance of ActionView, so we can use the render method outside of a controller
