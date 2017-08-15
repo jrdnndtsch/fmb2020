@@ -32,8 +32,9 @@ module Api
 
         puts '>>>>>>>>>>>>>>>save to disk'
         # save PDF to disk
-        pdf_path = Rails.root.join('tmp/reports', "#{@report.id}_#{Date.today.iso8601}.pdf")
+        pdf_path = Rails.root.join('tmp', "#{@report.id}_#{Date.today.iso8601}.pdf")
         File.open(pdf_path, 'wb') do |file|
+          puts ">>>>>>>>>>>>>>>>>>#{file}"
           file << doc_pdf
         end
 
