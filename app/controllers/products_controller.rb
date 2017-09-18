@@ -6,7 +6,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 	def create
 		require 'httparty'
 		headers = {'X-Shopify-Access-Token' => @shop_session.token, 'Content-Type' => 'application/json'}
-		base_uri = 'https://fbm-trudy.myshopify.com/admin/products.json'
+		base_uri = 'https://fbm2020-dev.myshopify.com/admin/products.json'
 		
 		StoredProduct.all.each do |c|
 			if !c.posted
@@ -74,6 +74,8 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  	}.to_json,
 			  	:headers => headers
 			  )
+			  puts request.code
+			  puts '>>>>>>>>>>>CODE>>>>>>>>>>>>'
 
 			  case request.code
 			    when 201
