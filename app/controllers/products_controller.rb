@@ -43,7 +43,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 					rights_name = {"key" => "name", "value" => r.name, "value_type" => "string", "namespace" => "rights_holder"}
 					rights_email = {"key" => "email", "value" => r.email, "value_type" => "string", "namespace" => "rights_holder"}
 					rights_website = {"key" => "website", "value" => r.website, "value_type" => "string", "namespace" => "rights_holder"}
-					metafields.push(rights_name, rights_email)
+					metafields.push(rights_email, rights_website)
 				end 	
 
 				metafields << {"key" => "pages", "value" => c.page_number, "value_type" => "integer", "namespace" => "book_data" }
