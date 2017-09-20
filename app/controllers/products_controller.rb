@@ -16,14 +16,14 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				metafields = []
 
 				#create tags
-				# c.tags.each do |tag|
-				# 	tags = tags +','+ tag.name
-				# 	tag.sub_tags.each do |sub_tag|
-				# 		tag = sub_tag.tag.name
-				# 		sub = tag +'-'+ sub_tag.name
-				# 		tags = tags +','+ sub
-				# 	end	
-				# end 
+				c.tags.each do |tag|
+					tags = tags +','+ tag.name
+					tag.sub_tags.each do |sub_tag|
+						tag = sub_tag.tag.name
+						sub = tag +'-'+ sub_tag.name
+						tags = tags +','+ sub
+					end	
+				end 
 
 				c.creators.each do |p|
 					name = p.first_name + ' ' + p.last_name
