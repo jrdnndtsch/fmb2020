@@ -72,7 +72,8 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  	:body => {
 			  		:product => products_hash
 			  	}.to_json,
-			  	:headers => headers
+			  	:headers => headers, 
+			  	:debug_output => $stdout
 			  )
 			  puts request.code
 			  puts '>>>>>>>>>>>CODE>>>>>>>>>>>>'
