@@ -64,6 +64,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  products_hash['body_html'] = c.body_html
 			  products_hash['vendor'] = c.vendor
 			  products_hash['product_type'] = c.product_type
+			  products_hash['type'] = c.tags.first
 			  products_hash['published'] = c.published
 			  products_hash['tags'] = tags
 			  products_hash['metafields'] = metafields
