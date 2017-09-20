@@ -17,6 +17,8 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 				#create tags
 				c.tags.each do |tag|
+					puts tag 
+					puts '<<<<<<<<<<<<<<tag >>>>>>>>>>>>>'
 					tags = tags +','+ tag.name
 					tag.sub_tags.each do |sub_tag|
 						tag = sub_tag.tag.name
