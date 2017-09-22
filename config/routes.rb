@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :awards
   resources :reports
   resources :sub_tags
   resources :tags

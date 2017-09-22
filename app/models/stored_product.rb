@@ -4,6 +4,7 @@ class StoredProduct < ActiveRecord::Base
 	has_many :reviews, dependent: :destroy
 	has_many :tags, dependent: :destroy
 	has_many :sub_tags, through: :tags
+	has_many :awards, dependent: :destroy
 
 	has_attached_file :featured_image,
 	  styles: {

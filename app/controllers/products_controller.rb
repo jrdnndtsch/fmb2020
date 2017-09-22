@@ -55,7 +55,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				# 2. create column for materials_available (string)
 				# 3. create column for rights_available (string)
 				# 4. Change rights_sold to string
-				# 5. Make field for age_range (string)
+				# 5. Make column for age_range (string)
 				# 6. Manage unrequired fields 
 						# rights_sold
 						# age_range

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814135727) do
+ActiveRecord::Schema.define(version: 20170922135004) do
+
+  create_table "awards", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "stored_product_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["stored_product_id"], name: "index_awards_on_stored_product_id"
+  end
 
   create_table "creators", force: :cascade do |t|
     t.string   "creator_type"
@@ -81,9 +89,13 @@ ActiveRecord::Schema.define(version: 20170814135727) do
     t.integer  "page_number"
     t.datetime "publication_date"
     t.string   "publication_location"
-    t.boolean  "rights_sold",                 default: false
+    t.string   "rights_sold"
     t.integer  "age_range_start"
     t.integer  "age_range_end"
+    t.string   "original_language"
+    t.string   "materials_available"
+    t.string   "rights_available"
+    t.string   "age_range"
   end
 
   create_table "sub_tags", force: :cascade do |t|
