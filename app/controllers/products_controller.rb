@@ -29,7 +29,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 				#create all contributors as metafields
 				c.creators.each_with_index do |p, i|
-					current_creator
+					current_creator = "creator_#{i}"
 					name = p.first_name + ' ' + p.last_name
 					creator_content = "#{name}[[#{p.bio}]]"
 					creator_data =  {"key" => current_creator, "value" => creator_content, "value_type" => "string", "namespace" => p.creator_type}
