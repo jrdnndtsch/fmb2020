@@ -28,16 +28,21 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				end 
 
 				#create all contributors as metafields
-				c.creators.each do |p|
+				c.creators.each_with_index do |p, i|
+					current_creator
 					name = p.first_name + ' ' + p.last_name
-					creator_data =  {"key" => name, "value" => p.bio, "value_type" => "string", "namespace" => p.creator_type}
+					creator_content = "#{name}[[#{p.bio}]]"
+					creator_data =  {"key" => current_creator, "value" => creator_content, "value_type" => "string", "namespace" => p.creator_type}
 					metafields.push(creator_data)
 				end 
 
-				c.reviews.each do |r|
+				c.reviews.each_with_index do |r, i|
 					if r.publication.present?
-						quote = r.quote + '[[' + r.citation + ']]'
-						review_data = {"key" => r.publication, "value" => quote, "value_type" => "string", "namespace" => "reviews"}
+						current_review = "review_#{i}"
+						review_content = "#{r.quote}[[#{r.citation}]][[r.publication]]"
+						review_data = {"key" => current_review, "value" => review_content, "value_type" => "string", "namespace" => "reviews"}
+						
+						# review_data = {"key" => r.publication, "value" => quote, "value_type" => "string", "namespace" => "reviews"}
 						metafields.push(review_data)
 					end
 				end 
@@ -48,6 +53,12 @@ class ProductsController < ShopifyApp::AuthenticatedController
 					rights_website = {"key" => "website", "value" => r.website, "value_type" => "string", "namespace" => "rights_holder"}
 					metafields.push(rights_email, rights_website)
 				end 
+
+				c.awards.each_with_index do |r, i|
+					current_award = "award_#{i}"
+
+					award_data = {"key" => current_award, "value" => r.name, "value_type" => "string", "namespace" => "awards"}
+				end	
 
 				#	additional info as metafields 
 				# TODO 
