@@ -17,9 +17,6 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 				#create tags
 				c.tags.each do |tag|
-					puts tags 
-					puts '<<<<<<<<<<<<<<tag >>>>>>>>>>>>>'
-					# tags = tags +','+ tag.name
 					tag.sub_tags.each do |sub_tag|
 						tag = sub_tag.tag.name
 						sub = sub_tag.name
@@ -29,15 +26,17 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 				#create all contributors as metafields
 				c.creators.each_with_index do |p, i|
-					current_creator = "creator_#{i}"
-					name = p.first_name + ' ' + p.last_name
-					creator_content = "#{name}[[#{p.bio}]]"
-					creator_data =  {"key" => current_creator, "value" => creator_content, "value_type" => "string", "namespace" => p.creator_type}
-					metafields.push(creator_data)
+					if p.first_name.present? || p.last_name.present?
+						current_creator = "creator_#{i}"
+						name = p.first_name + ' ' + p.last_name
+						creator_content = "#{name}[[#{p.bio}]]"
+						creator_data =  {"key" => current_creator, "value" => creator_content, "value_type" => "string", "namespace" => p.creator_type}
+						metafields.push(creator_data)
+					end
 				end 
 
 				c.reviews.each_with_index do |r, i|
-					if r.publication.present?
+					if r.quote.present?
 						current_review = "review_#{i}"
 						review_content = "#{r.quote}[[#{r.citation}]][[r.publication]]"
 						review_data = {"key" => current_review, "value" => review_content, "value_type" => "string", "namespace" => "reviews"}
@@ -77,9 +76,13 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 				metafields << {"key" => "publication_date", "value" => c.publication_date.strftime("%m/%d/%Y"), "value_type" => "string", "namespace" => "book_data"} 
 
-				metafields << {"key" => "rights_sold", "value" => c.rights_sold, "value_type" => "string", "namespace" => "book_data"} 
+				if c.rights_sold.present?
+					metafields << {"key" => "rights_sold", "value" => c.rights_sold, "value_type" => "string", "namespace" => "book_data"} 
+				end
 
-				metafields << {"key" => "age_range", "value" => c.age_range, "value_type" => "string", "namespace" => "book_data"} 
+				if c.age_range.present?
+					metafields << {"key" => "age_range", "value" => c.age_range, "value_type" => "string", "namespace" => "book_data"} 
+				end
 
 				metafields << {"key" => "materials_available", "value" => c.materials_available, "value_type" => "string", "namespace" => "book_data"} 
 
