@@ -67,8 +67,16 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				metafields << {"key" => "publication_date", "value" => c.publication_date.strftime("%m/%d/%Y"), "value_type" => "string", "namespace" => "book_data"} 
 
 				metafields << {"key" => "rights_sold", "value" => c.rights_sold, "value_type" => "string", "namespace" => "book_data"} 
-				metafields << {"key" => "age_range_start", "value" => c.age_range_start, "value_type" => "integer", "namespace" => "book_data"} 
-				metafields << {"key" => "age_range_end", "value" => c.age_range_end, "value_type" => "integer", "namespace" => "book_data"}
+
+				metafields << {"key" => "age_range", "value" => c.age_range, "value_type" => "string", "namespace" => "book_data"} 
+
+				metafields << {"key" => "materials_available", "value" => c.materials_available, "value_type" => "string", "namespace" => "book_data"} 
+
+				metafields << {"key" => "rights_available", "value" => c.rights_available, "value_type" => "string", "namespace" => "book_data"} 
+
+				metafields << {"key" => "original_language", "value" => c.original_language, "value_type" => "string", "namespace" => "book_data"} 
+				# metafields << {"key" => "age_range_start", "value" => c.age_range_start, "value_type" => "integer", "namespace" => "book_data"} 
+				# metafields << {"key" => "age_range_end", "value" => c.age_range_end, "value_type" => "integer", "namespace" => "book_data"}
 				
 
 
