@@ -27,6 +27,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 					end	
 				end 
 
+				#create all contributors as metafields
 				c.creators.each do |p|
 					name = p.first_name + ' ' + p.last_name
 					creator_data =  {"key" => name, "value" => p.bio, "value_type" => "string", "namespace" => p.creator_type}
@@ -46,11 +47,25 @@ class ProductsController < ShopifyApp::AuthenticatedController
 					rights_email = {"key" => "email", "value" => r.email, "value_type" => "string", "namespace" => "rights_holder"}
 					rights_website = {"key" => "website", "value" => r.website, "value_type" => "string", "namespace" => "rights_holder"}
 					metafields.push(rights_email, rights_website)
-				end 	
+				end 
 
+				#	additional info as metafields 
+				# TODO 
+				# 1. create column for original_language (string)
+				# 2. create column for materials_available (string)
+				# 3. create column for rights_available (string)
+				# 4. Change rights_sold to string
+				# 5. Make field for age_range (string)
+				# 6. Manage unrequired fields 
+						# rights_sold
+						# age_range
+						# all reviews related
+						# all awards related
+				# 7. Create awards table. One column name (string)		
 				metafields << {"key" => "pages", "value" => c.page_number, "value_type" => "integer", "namespace" => "book_data" }
+
 				metafields << {"key" => "publication_date", "value" => c.publication_date.strftime("%m/%d/%Y"), "value_type" => "string", "namespace" => "book_data"} 
-				# metafields << {"key" => "publication_location", "value" => c.publication_location, "value_type" => "string", "namespace" => "book_data"} 
+
 				metafields << {"key" => "rights_sold", "value" => c.rights_sold, "value_type" => "string", "namespace" => "book_data"} 
 				metafields << {"key" => "age_range_start", "value" => c.age_range_start, "value_type" => "integer", "namespace" => "book_data"} 
 				metafields << {"key" => "age_range_end", "value" => c.age_range_end, "value_type" => "integer", "namespace" => "book_data"}
@@ -64,7 +79,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  products_hash['body_html'] = c.body_html
 			  products_hash['vendor'] = c.vendor
 			  products_hash['product_type'] = c.tags.first.name
-			  products_hash['type'] = c.tags.first.name
+			  # products_hash['type'] = c.tags.first.name
 			  products_hash['published'] = c.published
 			  products_hash['tags'] = tags
 			  products_hash['metafields'] = metafields
