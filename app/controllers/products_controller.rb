@@ -61,21 +61,13 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				end	
 
 				#	additional info as metafields 
-				# TODO 
-				# 1. create column for original_language (string)
-				# 2. create column for materials_available (string)
-				# 3. create column for rights_available (string)
-				# 4. Change rights_sold to string
-				# 5. Make column for age_range (string)
-				# 6. Manage unrequired fields 
-						# rights_sold
-						# age_range
-						# all reviews related
-						# all awards related
-				# 7. Create awards table. One column name (string)		
-				metafields << {"key" => "pages", "value" => c.page_number, "value_type" => "integer", "namespace" => "book_data" }
+				if c.page_number.present?	
+					metafields << {"key" => "pages", "value" => c.page_number, "value_type" => "integer", "namespace" => "book_data" }
+				end
 
-				metafields << {"key" => "publication_date", "value" => c.publication_date.strftime("%m/%d/%Y"), "value_type" => "string", "namespace" => "book_data"} 
+				if c.publication_date.present?
+					metafields << {"key" => "publication_date", "value" => c.publication_date.strftime("%m/%d/%Y"), "value_type" => "string", "namespace" => "book_data"} 
+				end
 
 				if c.rights_sold.present?
 					metafields << {"key" => "rights_sold", "value" => c.rights_sold, "value_type" => "string", "namespace" => "book_data"} 
@@ -85,11 +77,17 @@ class ProductsController < ShopifyApp::AuthenticatedController
 					metafields << {"key" => "age_range", "value" => c.age_range, "value_type" => "string", "namespace" => "book_data"} 
 				end
 
-				metafields << {"key" => "materials_available", "value" => c.materials_available, "value_type" => "string", "namespace" => "book_data"} 
+				if c.materials_available.present?
+					metafields << {"key" => "materials_available", "value" => c.materials_available, "value_type" => "string", "namespace" => "book_data"} 
+				end
 
-				metafields << {"key" => "rights_available", "value" => c.rights_available, "value_type" => "string", "namespace" => "book_data"} 
+				if c.rights_available.present?
+					metafields << {"key" => "rights_available", "value" => c.rights_available, "value_type" => "string", "namespace" => "book_data"} 
+				end	
 
-				metafields << {"key" => "original_language", "value" => c.original_language, "value_type" => "string", "namespace" => "book_data"} 
+				if c.original_language.present?
+					metafields << {"key" => "original_language", "value" => c.original_language, "value_type" => "string", "namespace" => "book_data"} 
+				end	
 				# metafields << {"key" => "age_range_start", "value" => c.age_range_start, "value_type" => "integer", "namespace" => "book_data"} 
 				# metafields << {"key" => "age_range_end", "value" => c.age_range_end, "value_type" => "integer", "namespace" => "book_data"}
 				
