@@ -20,27 +20,42 @@ module Api
             # make a hash for each table and create with the prod
             rights_holder_hash = params['product']['vendor'].permit([:name, :website, :email]).to_h
             @product.rights_holders.new(rights_holder_hash)
-            
-            params['product']['review'].each do |review|
-              review_hash = params['product']['review'][review].permit([:quote, :citation, :publication]).to_h
-              @product.reviews.new(review_hash)
+
+
+
+            if params['product']['review']
+              params['product']['review'].each do |review|
+                review_hash = params['product']['review'][review].permit([:quote, :citation, :publication]).to_h
+                @product.reviews.new(review_hash)
+              end 
+            end   
+
+            if params['product']['award']
+              params['product']['award'].each do |award|
+                award_hash = params['product']['award'][award].permit([:name]).to_h
+                @product.awards.new(award_hash)
+              end 
+            end   
+
+            if params['product']['creator']
+              params['product']['creator'].each do |creator|
+                creator_hash = params['product']['creator'][creator].permit([:creator_type, :first_name, :last_name, :bio]).to_h
+                @product.creators.new(creator_hash)
+              end
+            end
+
+            if params['product']['tags']
+              params['product']['tags'].each do |tag|
+                @tag = @product.tags.new(name: tag)
+                if params['product']['tags'][tag]['sub_tags'] 
+                  params['product']['tags'][tag]['sub_tags'].each do |sub|  
+                    @tag.sub_tags.new(name: sub)
+                  end  
+                end   
+              end
             end 
 
-            params['product']['award'].each do |award|
-              award_hash = params['product']['award'][award].permit([:name]).to_h
-              @product.awards.new(award_hash)
-            end 
 
-            params['product']['creator'].each do |creator|
-              creator_hash = params['product']['creator'][creator].permit([:creator_type, :first_name, :last_name, :bio]).to_h
-              @product.creators.new(creator_hash)
-            end
-            params['product']['tags'].each do |tag|
-              @tag = @product.tags.new(name: tag)
-              params['product']['tags'][tag]['sub_tags'].each do |sub|  
-                @tag.sub_tags.new(name: sub)
-              end  
-            end
           end
           if params['featured_image'] && params['vendor_logo']
             puts params
