@@ -102,7 +102,9 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  products_hash['product_type'] = c.tags.first.name
 			  # products_hash['type'] = c.tags.first.name
 			  products_hash['published'] = c.published
-			  products_hash['tags'] = tags
+			  if tags.present?
+			  	products_hash['tags'] = tags
+			  end 
 			  products_hash['metafields'] = metafields
 			  products_hash['images'] = [{ "src" => featured_image_src}, {"src" => vendor_logo_src}]
 				puts products_hash
