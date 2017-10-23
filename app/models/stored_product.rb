@@ -7,14 +7,14 @@ class StoredProduct < ActiveRecord::Base
 	has_many :awards, dependent: :destroy
 
 	has_attached_file :featured_image,
-	  styles: {
-	        thumbnail: '100x100^',
-	        header: '500x500^'
-	      },
-	      convert_options: {
-	        thumbnail: " -gravity center -crop '100x100+0+0'",
-	        header: " -gravity center -crop '500x500+0+0'"
-	      },
+	  # styles: {
+	  #       thumbnail: '100x100^',
+	  #       header: '500x500^'
+	  #     },
+	  #     convert_options: {
+	  #       thumbnail: " -gravity center -crop '100x100+0+0'",
+	  #       header: " -gravity center -crop '500x500+0+0'"
+	  #     },
 	  default_url: "book.jpg"
 	  validates_attachment_content_type :featured_image, content_type: /\Aimage\/.*\Z/
 	has_attached_file :vendor_logo,
