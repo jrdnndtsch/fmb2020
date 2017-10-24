@@ -29,7 +29,7 @@ module Api
                 @product.reviews.new(review_hash)
               end 
             end   
-
+            #TODO mititgate for if award present but no value passed
             if params['product']['award']
               params['product']['award'].each do |award|
                 award_hash = params['product']['award'][award].permit([:name]).to_h

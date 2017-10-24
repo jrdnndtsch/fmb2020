@@ -4,4 +4,5 @@ class	Product
 		@product.assign_attributes(title: product_data['product']['title'], body_html: product_data['product']['body_html'])
 		
 	end
+
 end
