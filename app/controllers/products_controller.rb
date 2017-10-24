@@ -109,7 +109,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  products_hash['images'] = [{ "src" => featured_image_src}, {"src" => vendor_logo_src}]
 				puts products_hash
 				#delete a metafield if it has no value as it will not be submitted to Shopify
-				product_hash['metafields'].delete_if { |h| h["value"].size <= 0 }
+				products_hash['metafields'].delete_if { |h| h["value"].size <= 0 }
 			  request = HTTParty.post(
 			  	base_uri,
 			  	:body => {
