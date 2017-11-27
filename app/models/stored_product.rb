@@ -22,10 +22,10 @@ class StoredProduct < ActiveRecord::Base
 	        thumbnail: '100x100^',
 	        header: '500x500^'
 	      },
-	      convert_options: {
-	        thumbnail: " -gravity center -crop '100x100+0+0'",
-	        header: " -gravity center -crop '500x500+0+0'"
-	      },
+	      # convert_options: {
+	      #   thumbnail: " -gravity center -crop '100x100+0+0'",
+	      #   header: " -gravity center -crop '500x500+0+0'"
+	      # },
 	  default_url: "vendor.jpg"
 	  validates_attachment_content_type :vendor_logo, content_type: /\Aimage\/.*\Z/  
 end
