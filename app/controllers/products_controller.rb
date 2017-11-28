@@ -88,6 +88,13 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				if c.original_language.present?
 					metafields << {"key" => "original_language", "value" => c.original_language, "value_type" => "string", "namespace" => "book_data"} 
 				end	
+
+				if c.series_name.present?
+					metafields << {"key" => "series_name", "value" => c.series_name, "value_type" => "string", "namespace" => "book_data"} 
+				end	
+				if c.series_number.present?
+					metafields << {"key" => "series_number", "value" => c.series_number, "value_type" => "string", "namespace" => "book_data"} 
+				end	
 				# metafields << {"key" => "age_range_start", "value" => c.age_range_start, "value_type" => "integer", "namespace" => "book_data"} 
 				# metafields << {"key" => "age_range_end", "value" => c.age_range_end, "value_type" => "integer", "namespace" => "book_data"}
 				
