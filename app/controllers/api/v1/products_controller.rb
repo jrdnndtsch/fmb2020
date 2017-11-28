@@ -25,7 +25,7 @@ module Api
 
             if params['product']['review']
               params['product']['review'].each do |review|
-                review_hash = params['product']['review'][review].permit([:quote, :citation, :publication]).to_h
+                review_hash = params['product']['review'][review].permit([:quote, :citation, :publication, :link]).to_h
                 @product.reviews.new(review_hash)
               end 
             end   
