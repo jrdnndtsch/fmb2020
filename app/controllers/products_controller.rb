@@ -86,11 +86,11 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				end
 
 				if c.additional_materials.present?
-					metafields << {"key" => "materials_available", "value" => c.materials_available, "value_type" => "string", "namespace" => "book_data"} 
+					metafields << {"key" => "additional_materials", "value" => c.additional_materials, "value_type" => "string", "namespace" => "book_data"} 
 				end
 
 				if c.rights_available.present?
-					metafields << {"key" => "additional_materials", "value" => c.additional_materials, "value_type" => "string", "namespace" => "book_data"} 
+					metafields << {"key" => "rights_available", "value" => c.rights_available, "value_type" => "string", "namespace" => "book_data"} 
 				end	
 
 				if c.original_language.present?
