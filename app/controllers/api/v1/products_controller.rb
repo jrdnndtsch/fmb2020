@@ -13,7 +13,7 @@ module Api
           if params['product']
             #create new stored product
             @product = StoredProduct.new
-            product_hash =  params['product']['product'].permit([:title, :body_html, :vendor, :product_type, :published, :featured_image, :age_range_start, :age_range_end, :publication_date, :publication_location, :rights_sold, :page_number, :age_range, :original_language, :materials_available, :rights_available, :series_name, :series_number, :age_range_other]).to_h
+            product_hash =  params['product']['product'].permit([:title, :body_html, :vendor, :product_type, :published, :featured_image, :age_range_start, :age_range_end, :publication_date, :publication_location, :rights_sold, :page_number, :age_range, :original_language, :materials_available, :rights_available, :series_name, :series_number, :age_range_other, :additional_materials]).to_h
             puts product_hash
             
             @product.assign_attributes(product_hash)

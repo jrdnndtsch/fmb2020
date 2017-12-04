@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204153853) do
+ActiveRecord::Schema.define(version: 20171204160004) do
 
   create_table "awards", force: :cascade do |t|
     t.string   "name"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20171204153853) do
     t.string   "series_name"
     t.string   "series_number"
     t.string   "age_range_other"
+    t.string   "additional_materials"
   end
 
   create_table "sub_tags", force: :cascade do |t|
