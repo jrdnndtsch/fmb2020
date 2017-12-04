@@ -77,6 +77,10 @@ class ProductsController < ShopifyApp::AuthenticatedController
 					metafields << {"key" => "age_range", "value" => c.age_range, "value_type" => "string", "namespace" => "book_data"} 
 				end
 
+				if c.age_range_other.present?
+					metafields << {"key" => "age_range_other", "value" => c.age_range_other, "value_type" => "string", "namespace" => "book_data"} 
+				end
+
 				if c.materials_available.present?
 					metafields << {"key" => "materials_available", "value" => c.materials_available, "value_type" => "string", "namespace" => "book_data"} 
 				end
