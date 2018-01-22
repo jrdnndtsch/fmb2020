@@ -138,6 +138,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 			  case request.code
 				when 201
+					puts "#{response}"
 					puts "RESUTL OF POST PROD<<<<<<<<<<<<<<<<<"
 			  		c.update(posted: true)
 			  		puts "#{c.title} was posted!"
