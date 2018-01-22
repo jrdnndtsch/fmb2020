@@ -11,8 +11,8 @@ module Api
         items = JSON.parse(params[:items])
 
         items.each do |item|
-          product = ShopifyAPI::Product.find(item['id'])
-          puts product
+          
+          puts item['id']
         end
 
         
