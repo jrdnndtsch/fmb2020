@@ -140,7 +140,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				when 201
 					puts request.parsed_response["product"]["id"]
 					puts "RESUTL OF POST PROD<<<<<<<<<<<<<<<<<"
-			  		c.update(posted: true, shopify_product_id: request.parsed_response.product.id)
+			  		c.update(posted: true, shopify_product_id: request.parsed_response["product"]["id"])
 			  		puts "#{c.title} was posted!"
 			    when 404
 			      puts "O noes not found!"
