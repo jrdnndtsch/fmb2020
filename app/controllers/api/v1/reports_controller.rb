@@ -11,10 +11,10 @@ module Api
         items = JSON.parse(params[:items])
 
         items.each do |item|
-          item.new_value = "thing"
+          puts item
         end
 
-        puts items
+        
         # create an instance of ActionView, so we can use the render method outside of a controller
         av = ActionView::Base.new()
         av.view_paths = ActionController::Base.view_paths
