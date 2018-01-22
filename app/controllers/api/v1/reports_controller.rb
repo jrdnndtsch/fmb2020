@@ -12,8 +12,7 @@ module Api
         items = JSON.parse(params[:items])
 
         items.each do |item|
-          puts item.class
-          puts 'TYPE<<<<<<<<<<<<'
+          puts item["id"]
         end
 
 
