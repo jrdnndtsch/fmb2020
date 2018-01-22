@@ -9,15 +9,12 @@ module Api
         email = params[:email]
         @report = Report.create!(email: email)
 
-        new_items = params[:items]
-
-        new_items.each do |item|
-          item[:new_thing] = "new thing on this item"
-        end
-        puts '<<<<<<<<<<<<<<<< NEW ITEMS'
-        puts new_items
         items = JSON.parse(params[:items])
 
+        items.each do |item|
+          puts item.class
+          puts 'TYPE<<<<<<<<<<<<'
+        end
 
 
         
