@@ -1,4 +1,4 @@
-class Api::BaseController < ActionController::Base
+class Api::BaseController < ShopifyApp::AuthenticatedController
   acts_as_token_authentication_handler_for User
   before_filter :cors_set_access_control_headers
   # before_filter :cors_preflight_check
