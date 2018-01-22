@@ -138,7 +138,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 			  case request.code
 				when 201
-					puts response.product.id 
+					puts "#{response.product}"
 					puts "RESUTL OF POST PROD<<<<<<<<<<<<<<<<<"
 			  		c.update(posted: true)
 			  		puts "#{c.title} was posted!"
@@ -150,6 +150,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  
 			end
 		end
+		
 		@products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
 		respond_to do |format|
 		  format.js { render :partial => "product_list_js" }
