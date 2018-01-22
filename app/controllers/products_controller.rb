@@ -138,7 +138,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
 			  case request.code
 				when 201
-					puts request.parsed_response.product.id
+					puts request.parsed_response["product"]["id"]
 					puts "RESUTL OF POST PROD<<<<<<<<<<<<<<<<<"
 			  		c.update(posted: true, shopify_product_id: request.parsed_response.product.id)
 			  		puts "#{c.title} was posted!"
