@@ -11,8 +11,8 @@ module Api
         items = JSON.parse(params[:items])
 
         items.each do |item|
-          
-          puts item['id']
+          puts '>>>>>>>>>>>>>>>>>>>inisde each'
+          id = item['id']
         end
 
         
