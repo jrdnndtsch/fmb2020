@@ -3,56 +3,60 @@
 
 <% items.each do |item| %>
 	<div class="product">
-		<h2><%= item['product_title'] %></h2>	
-		<%= image_tag item['image']%>
-		<!-- SERIES INFO -->
-		<% if item['series_name'].size > 0 %>
-			<p><strong>Series Name:</strong> <%= item['series_name']%></p>
-		<% end %>
-		<% if item['series_number'].size > 0 %>
-			<p><strong>Series Number:</strong> <%= item['series_number']%></p>
-		<% end %>
-
-		<!-- CONTRIBUTOR INFO -->
-
-		<% item['authors'].each do |author| %>
-			<p>author: <%= author%></p>
-		<% end %>
-		<% item['illustrators'].each do |illustrator| %>
-			<p>illustrator: <%= illustrator%></p>
-		<% end %>
-		<% item['translators'].each do |translator| %>
-			<p>translator: <%= translator%></p>
-		<% end %>
-		<% item['editors'].each do |editor| %>
-			<p>editor: <%= editor%></p>
-		<% end %>
-
-		<!-- RIGHTS HOLDER INFO -->
-		<p class="title">Rights Holder Info</p>
-		<% if item['rights_holder'].size > 0 %>
-			<p><strong>Rights Holder (Company):</strong> <%= item['rights_holder']%></p>
-		<% end %>
-		<% if item['rights_holder_info'].size > 0 %>
-			<% item['rights_holder_info'].each do |key, val| %>
-				<p><strong><%= key.to_s%>:</strong><%= val %></p>
+		<div>
+			<h2><%= item['product_title'] %></h2>	
+			<%= image_tag item['image']%>
+			<!-- SERIES INFO -->
+			<% if item['series_name'].size > 0 %>
+				<p><strong>Series Name:</strong> <%= item['series_name']%></p>
 			<% end %>
-		<% end %>
-		<p class="title">Additional Info</p>
-		<% if item['number_of_pages'].size > 0 %>
-			<p><strong># of pages:</strong> <%= item['number_of_pages']%></p>
-		<% end %>
-		<% if item['original_language'].size > 0 %>
-			<p><strong>Original Language of Publication:</strong> <%= item['original_language']%></p>
-		<% end %>
-		<% if item['materials_available'].size > 0 %>
-			<p><strong>Materials Available:</strong> <%= item['materials_available']%></p>
-		<% end %>
-		<% if item['rights_available'].size > 0 %>
-			<p><strong>Rights Available:</strong> <%= item['rights_available']%></p>
-		<% end %>
+			<% if item['series_number'].size > 0 %>
+				<p><strong>Series Number:</strong> <%= item['series_number']%></p>
+			<% end %>
+	
+			<!-- CONTRIBUTOR INFO -->
+	
+			<% item['authors'].each do |author| %>
+				<p>author: <%= author%></p>
+			<% end %>
+			<% item['illustrators'].each do |illustrator| %>
+				<p>illustrator: <%= illustrator%></p>
+			<% end %>
+			<% item['translators'].each do |translator| %>
+				<p>translator: <%= translator%></p>
+			<% end %>
+			<% item['editors'].each do |editor| %>
+				<p>editor: <%= editor%></p>
+			<% end %>
+		</div>
+		<div>
+			<!-- RIGHTS HOLDER INFO -->
+			<p class="title">Rights Holder Info</p>
+			<% if item['rights_holder'].size > 0 %>
+				<p><strong>Rights Holder (Company):</strong> <%= item['rights_holder']%></p>
+			<% end %>
+			<% if item['rights_holder_info'].size > 0 %>
+				<% item['rights_holder_info'].each do |key, val| %>
+					<p><strong><%= key.to_s%>:</strong><%= val %></p>
+				<% end %>
+			<% end %>
+			<p class="title">Additional Info</p>
+			<% if item['number_of_pages'].size > 0 %>
+				<p><strong># of pages:</strong> <%= item['number_of_pages']%></p>
+			<% end %>
+			<% if item['original_language'].size > 0 %>
+				<p><strong>Original Language of Publication:</strong> <%= item['original_language']%></p>
+			<% end %>
+			<% if item['materials_available'].size > 0 %>
+				<p><strong>Materials Available:</strong> <%= item['materials_available']%></p>
+			<% end %>
+			<% if item['rights_available'].size > 0 %>
+				<p><strong>Rights Available:</strong> <%= item['rights_available']%></p>
+			<% end %>
+		</div>
+
 		
-		<p><%= item['product_description']%></p>
+		<p class="desc"><%= item['product_description']%></p>
 	</div>
 <% end %>
 
@@ -62,7 +66,19 @@
 		max-width: 200px;
 		max-height: 400px;
 	}
-
-
+	p {
+		font-size: 12px;
+	}
+	.product > div {
+		float: left;
+	}
+	.desc {
+		clear: both;
+	}
+	p.title {
+		border-bottom: 4px solid #ebf5f1;
+		font-size: 16px;
+		font-weight: bold;
+	}
 
 </style>
