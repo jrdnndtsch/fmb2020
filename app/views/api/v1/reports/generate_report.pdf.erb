@@ -4,6 +4,9 @@
 <% items.each do |item| %>
 	<div class="product">
 		<h2><%= item['product_title'] %></h2>	
+		<% item['authors'].each do |author| %>
+			<p>author: <%= author%></p>
+		<% end %>
 		<%= image_tag item['image']%>
 		<p><%= item['product_description']%></p>
 	</div>
