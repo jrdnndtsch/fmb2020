@@ -4,8 +4,42 @@
 <% items.each do |item| %>
 	<div class="product">
 		<h2><%= item['product_title'] %></h2>	
+		<!-- SERIES INFO -->
+		<% if item['series_name'].size > 0 %>
+			<p><strong>Series Name:</strong> <%= item['series_name']%></p>
+		<% end %>
+		<% if item['series_number'].size > 0 %>
+			<p><strong>Series Number:</strong> <%= item['series_number']%></p>
+		<% end %>
+
+		<!-- CONTRIBUTOR INFO -->
+
 		<% item['authors'].each do |author| %>
 			<p>author: <%= author%></p>
+		<% end %>
+		<% item['illustrators'].each do |illustrator| %>
+			<p>illustrator: <%= illustrator%></p>
+		<% end %>
+		<% item['translators'].each do |translator| %>
+			<p>translator: <%= translator%></p>
+		<% end %>
+		<% item['editors'].each do |editor| %>
+			<p>editor: <%= editor%></p>
+		<% end %>
+
+		<!-- RIGHTS HOLDER INFO -->
+		<% if item['rights_holder'].size > 0 %>
+			<p><strong>Rights Holder (Company):</strong> <%= item['rights_holder']%></p>
+		<% end %>
+		<% if item['rights_holder_info'].size > 0 %>
+			<% item['rights_holder_info'].each do |key, val| %>
+				<p><strong><%= key.to_s%>:</strong><%= val %></p>
+			<% end %>
+		<% end %>
+		
+
+		<% if item['materials_available'].size > 0 %>
+			<p><strong>Materials Available:</strong> <%= item['materials_available']%></p>
 		<% end %>
 		<%= image_tag item['image']%>
 		<p><%= item['product_description']%></p>
