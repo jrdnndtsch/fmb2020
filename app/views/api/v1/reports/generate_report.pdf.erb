@@ -15,17 +15,16 @@
 			<% end %>
 	
 			<!-- CONTRIBUTOR INFO -->
-	
-			<% item['authors'].each do |author| %>
+			<% Array(item['authors']).each do |author| %>
 				<p>author: <%= author%></p>
 			<% end %>
-			<% item['illustrators'].each do |illustrator| %>
+			<% Array(item['illustrators']).each do |illustrator| %>
 				<p>illustrator: <%= illustrator%></p>
 			<% end %>
-			<% item['translators'].each do |translator| %>
+			<% Array(item['translators']).each do |translator| %>
 				<p>translator: <%= translator%></p>
 			<% end %>
-			<% item['editors'].each do |editor| %>
+			<% Array(item['editors']).each do |editor| %>
 				<p>editor: <%= editor%></p>
 			<% end %>
 		</div>
