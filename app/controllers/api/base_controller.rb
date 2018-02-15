@@ -6,7 +6,6 @@ class Api::BaseController < ActionController::Base
   
   private
     def cors_set_access_control_headers
-    	puts '>>>>>>>>>>>>>cors<<<<<<<<<<<<<<<<<'
       headers['Access-Control-Allow-Origin'] = '*'
       headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
       headers['Access-Control-Request-Method'] = '*'
