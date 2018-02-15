@@ -7,10 +7,10 @@
 			<h2><%= item['product_title'] %></h2>	
 			<%= image_tag item['image']%>
 			<!-- SERIES INFO -->
-			<% if !item['series_name'].blank? %>
+			<% if item['series_name'].present? %>
 				<p><strong>Series Name:</strong> <%= item['series_name']%></p>
 			<% end %>
-			<% if item['series_number'].blank? %>
+			<% if item['series_number'].present? %>
 				<p><strong>Series Number:</strong> <%= item['series_number']%></p>
 			<% end %>
 	
@@ -31,25 +31,25 @@
 		<div>
 			<!-- RIGHTS HOLDER INFO -->
 			<p class="title">Rights Holder Info</p>
-			<% if item['rights_holder'].blank? %>
+			<% if item['rights_holder'].present? %>
 				<p><strong>Rights Holder (Company):</strong> <%= item['rights_holder']%></p>
 			<% end %>
-			<% if item['rights_holder_info'].blank? %>
-				<% item['rights_holder_info'].each do |key, val| %>
+			<% if item['rights_holder_info'].present? %>
+				<% Array(item['rights_holder_info']).each do |key, val| %>
 					<p><strong><%= key.to_s%>:</strong><%= val %></p>
 				<% end %>
 			<% end %>
 			<p class="title">Additional Info</p>
-			<% if item['number_of_pages'].blank? %>
+			<% if item['number_of_pages'].present? %>
 				<p><strong># of pages:</strong> <%= item['number_of_pages']%></p>
 			<% end %>
-			<% if item['original_language'].blank? %>
+			<% if item['original_language'].present? %>
 				<p><strong>Original Language of Publication:</strong> <%= item['original_language']%></p>
 			<% end %>
-			<% if item['materials_available'].blank? %>
+			<% if item['materials_available'].present? %>
 				<p><strong>Materials Available:</strong> <%= item['materials_available']%></p>
 			<% end %>
-			<% if item['rights_available'].blank? %>
+			<% if item['rights_available'].present? %>
 				<p><strong>Rights Available:</strong> <%= item['rights_available']%></p>
 			<% end %>
 		</div>
