@@ -7,7 +7,7 @@
 			<h2><%= item['product_title'] %></h2>	
 			<%= image_tag item['image']%>
 			<!-- SERIES INFO -->
-			<% if item['series_name'].blank? %>
+			<% if !item['series_name'].blank? %>
 				<p><strong>Series Name:</strong> <%= item['series_name']%></p>
 			<% end %>
 			<% if item['series_number'].blank? %>
