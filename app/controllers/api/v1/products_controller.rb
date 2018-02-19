@@ -70,6 +70,10 @@ module Api
           end
         end
 
+        def product_published
+          puts 'PRODUCT PUBLISHED ROUTE'
+        end
+
         # @stuff = params['product']
         # render json: @stuff
       end
