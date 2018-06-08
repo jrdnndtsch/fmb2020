@@ -10,6 +10,10 @@ class ProductsController < ShopifyApp::AuthenticatedController
 		
 		StoredProduct.all.each do |c|
 			if !c.posted
+				puts '>>>>>>>>>>>CODE>>>>>>>>>>>>'
+				puts request.code
+				puts '>>>>>>>>>>>TITLE>>>>>>>>>>>>'
+				puts c.title
 				tags = ''
 				metafields = []
 
@@ -132,10 +136,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  	:headers => headers, 
 			  	:debug_output => $stdout
 			  )
-			  puts '>>>>>>>>>>>CODE>>>>>>>>>>>>'
-			  puts request.code
-			  puts '>>>>>>>>>>>TITLE>>>>>>>>>>>>'
-			  puts c.title
+
 
 			  case request.code
 				when 201
