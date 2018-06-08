@@ -10,7 +10,8 @@ class ProductsController < ShopifyApp::AuthenticatedController
 		
 		StoredProduct.all.each do |c|
 			if !c.posted
-
+				puts "<<<<<<<<<<<<<<<<<<PRODUCT"
+				puts c.id
 				tags = ''
 				metafields = []
 
