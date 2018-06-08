@@ -10,8 +10,6 @@ class ProductsController < ShopifyApp::AuthenticatedController
 		
 		StoredProduct.all.each do |c|
 			if !c.posted
-				puts c.title
-				puts '>>>>>>>>>>>>>>>TITLE>>>>>>>>>>>>>'
 				tags = ''
 				metafields = []
 
@@ -46,6 +44,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 					end
 				end 
 
+			
 				c.rights_holders.each do |r|
 					rights_name = {"key" => "name", "value" => r.name, "value_type" => "string", "namespace" => "rights_holder"}
 					rights_email = {"key" => "email", "value" => r.email, "value_type" => "string", "namespace" => "rights_holder"}
@@ -133,8 +132,10 @@ class ProductsController < ShopifyApp::AuthenticatedController
 			  	:headers => headers, 
 			  	:debug_output => $stdout
 			  )
-			  puts request.code
 			  puts '>>>>>>>>>>>CODE>>>>>>>>>>>>'
+			  puts request.code
+			  puts '>>>>>>>>>>>TITLE>>>>>>>>>>>>'
+			  puts c.title
 
 			  case request.code
 				when 201

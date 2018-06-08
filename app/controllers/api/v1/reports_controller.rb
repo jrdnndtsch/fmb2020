@@ -10,8 +10,7 @@ module Api
         @report = Report.create!(email: email)
 
         items = JSON.parse(params[:items])
-        puts params[:items]
-        puts '>>>>>>>>>>>>>>> THE ITEMS <<<<<<<<<<<<<<<<<'
+        
         items.each do |item|
           # product = ShopifyAPI::Product.find(item["id"])
           # puts product
