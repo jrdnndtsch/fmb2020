@@ -10,16 +10,15 @@ class ProductsController < ShopifyApp::AuthenticatedController
 		
 		StoredProduct.all.each do |c|
 			if !c.posted
-				puts '>>>>>>>>>>>TITLE>>>>>>>>>>>>'
-				puts c.title
+
 				tags = ''
 				metafields = []
 
 				#create tags
 				c.tags.each do |tag|
 					tag.sub_tags.each do |sub_tag|
-						tag = sub_tag.tag.name
-						sub = sub_tag.name
+						tag = sub_tag.try(:tag).try(:name)
+						sub = sub_tag.try(:name)
 						tags = tags +','+ sub
 					end	
 				end 
