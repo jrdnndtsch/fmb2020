@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122113631) do
+ActiveRecord::Schema.define(version: 20180620194426) do
 
   create_table "awards", force: :cascade do |t|
     t.string   "name"
@@ -102,6 +102,9 @@ ActiveRecord::Schema.define(version: 20180122113631) do
     t.string   "age_range_other"
     t.string   "additional_materials"
     t.string   "shopify_product_id"
+    t.string   "submitted_by_first_name"
+    t.string   "submitted_by_last_name"
+    t.string   "submitted_by_email"
   end
 
   create_table "sub_tags", force: :cascade do |t|

@@ -105,6 +105,18 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				if c.series_number.present?
 					metafields << {"key" => "series_number", "value" => c.series_number, "value_type" => "string", "namespace" => "book_data"} 
 				end	
+
+				if c.submitted_by_first_name
+					metafields << {"key" => "submitted_by_first_name", "value" => c.submitted_by_first_name, "value_type" => "string", "namespace" => "user_data"}
+				end 
+
+				if c.submitted_by_last_name
+					metafields << {"key" => "submitted_by_last_name", "value" => c.submitted_by_last_name, "value_type" => "string", "namespace" => "user_data"}
+				end 
+
+				if c.submitted_by_email
+					metafields << {"key" => "submitted_by_email", "value" => c.submitted_by_email, "value_type" => "string", "namespace" => "user_data"}
+				end 
 				# metafields << {"key" => "age_range_start", "value" => c.age_range_start, "value_type" => "integer", "namespace" => "book_data"} 
 				# metafields << {"key" => "age_range_end", "value" => c.age_range_end, "value_type" => "integer", "namespace" => "book_data"}
 				
