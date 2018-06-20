@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :products
       post 'generate_report' => 'reports#generate_report'
       post 'product_published' => 'products#product_published'
+      post 'customer_created' => 'customers#create'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
