@@ -1,21 +1,32 @@
-<ul class="list list--products card">
-  <% @products.each do |product| %>
-    <li>
-    	<span><%= product.title%></span>
-    	<span><%= product.vendor%></span>
-    	<span>
-	    	<% if product.published_at.present? %>
-	    		true
-	    	<% else %>	
-	    		false
-	    	<% end %>	
-    	</span>
-    	<span>
-    		<%= link_to 'edit', "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top", class: 'button--secondary' %>
-    	</span>
-    	<span>
-    		<%= Date.parse(product.created_at) %>
-    	</span>
-    </li>
-  <% end %>
-</ul>
+<div class="Polaris-Card">
+  <div class="Polaris-ResourceList__ResourceListWrapper">
+    <ul class="Polaris-ResourceList" aria-live="polite">
+       <% @products.each do |product| %>
+        <li class="Polaris-ResourceList__ItemWrapper">
+          <div class="Polaris-ResourceList-Item"><a aria-describedby="341" aria-label="View details for Mae Jemison" class="Polaris-ResourceList-Item__Link" href="customers/341" data-polaris-unstyled="true"></a>
+            <div class="Polaris-ResourceList-Item__Container" id="341">
+              <div class="Polaris-ResourceList-Item__Owned">
+                <div class="Polaris-ResourceList-Item__Media"><span aria-label="Mae Jemison" role="img" class="Polaris-Avatar Polaris-Avatar--styleSix Polaris-Avatar--sizeMedium Polaris-Avatar--hasImage" style="background-image: url(<%= product.images[0].src%>); background-size: cover;">
+                    
+                </span></div>
+              </div>
+              <div class="Polaris-ResourceList-Item__Content">
+                <h3><span class="Polaris-TextStyle--variationStrong"><%= product.title%></span></h3>
+                <div><%= product.vendor%></div>
+              </div>
+              <div class="Polaris-ResourceList-Item__Actions">
+                <div class="Polaris-ButtonGroup Polaris-ButtonGroup--segmented">
+                  <div class="Polaris-ButtonGroup__Item">
+                    <%= link_to "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top", class: "Polaris-Button Polaris-Button--sizeSlim"  do %>
+                        <span class="Polaris-Button__Content"><span>Edit</span></span>
+                    <% end %>    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+       <% end %> 
+    </ul>
+  </div>
+</div>
