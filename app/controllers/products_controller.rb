@@ -39,7 +39,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 				c.reviews.each_with_index do |r, i|
 					if r.quote.present?
 						current_review = "review_#{i}"
-						review_content = "#{r.quote}[[#{r.link}]][[#{r.publication}]]"
+						review_content = "#{r.quote}[[#{r.link}]][[#{r.publication}]][[#{r.citation}]]"
 						review_data = {"key" => current_review, "value" => review_content, "value_type" => "string", "namespace" => "reviews"}
 						
 						# review_data = {"key" => r.publication, "value" => quote, "value_type" => "string", "namespace" => "reviews"}
