@@ -4,7 +4,7 @@ class NewCustomerMailer < ApplicationMailer
 			@last_name = last_name
 			@email = email
 	    mail(
-	      to: 'hello@upatfive.ca',
+	      to: 'info@canadafbm2020.com',
 	      subject: "Catalogue Sign Up #{Date.today.iso8601}",
 	    )
 	  end
