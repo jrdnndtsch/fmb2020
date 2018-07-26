@@ -6,7 +6,7 @@
           <div class="Polaris-ResourceList-Item"><a aria-describedby="341" aria-label="View details for Mae Jemison" class="Polaris-ResourceList-Item__Link" href="customers/341" data-polaris-unstyled="true"></a>
             <div class="Polaris-ResourceList-Item__Container" id="341">
               <div class="Polaris-ResourceList-Item__Owned">
-                <div class="Polaris-ResourceList-Item__Media"><span aria-label="Mae Jemison" role="img" class="Polaris-Avatar Polaris-Avatar--styleSix Polaris-Avatar--sizeMedium Polaris-Avatar--hasImage" style="background-image: url(<%= product.images[0].src%>); background-size: cover;">
+                <div class="Polaris-ResourceList-Item__Media"><span aria-label="Mae Jemison" role="img" class="Polaris-Avatar Polaris-Avatar--styleSix Polaris-Avatar--sizeMedium Polaris-Avatar--hasImage" style="background-image: url(<%= product.try(:images)[0].try(:src)%>); background-size: cover;">
                     
                 </span></div>
               </div>
