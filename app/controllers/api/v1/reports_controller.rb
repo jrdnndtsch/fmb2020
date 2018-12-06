@@ -16,6 +16,9 @@ module Api
           # puts product
         end
 
+        puts "✨✨✨✨✨✨"
+        puts items
+        puts "✨✨✨✨✨✨"
 
         
         # create an instance of ActionView, so we can use the render method outside of a controller
