@@ -59,7 +59,7 @@
 				<p><strong>Rights Available:</strong> <%= item['rights_available']%></p>
 			<% end %>
 			<% if item['url'].present? %>
-				<a href="<%= ENV['shopify_url'] %><%= item['url']%>"><strong>FBM2020 link:</strong><%= ENV['shopify_url'] %><%= item['url']%></a>
+				<p><strong>FBM2020 link:</strong> 	<a href="<%= ENV['shopify_url'] %><%= item['url']%>"><%= ENV['shopify_url'] %><%= item['url']%></a></p>
 			<% end %>
 		</div>
 
@@ -80,6 +80,7 @@
 	}
 	a {
 		color:black;
+		margin-bottom: 12px;
 	}
 	.product > div {
 		float: left;
