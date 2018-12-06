@@ -59,7 +59,7 @@
 				<p><strong>Rights Available:</strong> <%= item['rights_available']%></p>
 			<% end %>
 			<% if item['url'].present? %>
-				<a href="<%= ENV['shopify_url'] %><%= item['url']%>">View on FBM2020</a>
+				<a href="<%= ENV['shopify_url'] %><%= item['url']%>"><strong>FBM2020 link:</strong><%= ENV['shopify_url'] %><%= item['url']%></a>
 			<% end %>
 		</div>
 
@@ -75,8 +75,11 @@
 		max-width: 200px;
 		max-height: 400px;
 	}
-	p {
+	p, a {
 		font-size: 12px;
+	}
+	a {
+		color:black;
 	}
 	.product > div {
 		float: left;
