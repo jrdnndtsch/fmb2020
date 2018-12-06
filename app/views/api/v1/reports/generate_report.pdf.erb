@@ -43,10 +43,10 @@
 			<% if item['number_of_pages'].present? %>
 				<p><strong># of pages:</strong> <%= item['number_of_pages']%></p>
 			<% end %>
-			<% if item['age_range']%>
+			<% if item['age_range'].present?%>
 				<p><strong>age range:</strong> <%= item['age_range']%></p>
 			<% end %>
-			<% if item['age_range_other']%>
+			<% if item['age_range_other'].present?%>
 				<p><strong>age range:</strong> <%= item['age_range_other']%></p>
 			<% end %>
 			<% if item['original_language'].present? %>
