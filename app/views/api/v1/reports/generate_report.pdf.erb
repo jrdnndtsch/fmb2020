@@ -43,6 +43,12 @@
 			<% if item['number_of_pages'].present? %>
 				<p><strong># of pages:</strong> <%= item['number_of_pages']%></p>
 			<% end %>
+			<% if item['age_range']%>
+				<p><strong>age range:</strong> <%= item['age_range']%></p>
+			<% end %>
+			<% if item['age_range_other']%>
+				<p><strong>age range:</strong> <%= item['age_range_other']%></p>
+			<% end %>
 			<% if item['original_language'].present? %>
 				<p><strong>Original Language of Publication:</strong> <%= item['original_language']%></p>
 			<% end %>
@@ -51,6 +57,9 @@
 			<% end %>
 			<% if item['rights_available'].present? %>
 				<p><strong>Rights Available:</strong> <%= item['rights_available']%></p>
+			<% end %>
+			<% if item['url'].present? %>
+				<a href="<%= ENV['shopify_url'] %><%= item['url']%>">View on FBM2020</a>
 			<% end %>
 		</div>
 
