@@ -36,7 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'shopify_app'
+gem 'sqlite3'
+
+gem 'shopify_app', '~> 7.2.11'
 
 gem 'dotenv-rails'
 
