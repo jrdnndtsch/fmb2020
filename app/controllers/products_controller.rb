@@ -1,7 +1,8 @@
 class ProductsController < ShopifyApp::AuthenticatedController
 	# before_action :authenticate_user!
 	def index
-		@products = ShopifyAPI::Product.find(:all, params: { limit: 40, published_status: "unpublished" })
+		# @products = ShopifyAPI::Product.find(:all, params: { limit: 40, published_status: "unpublished" })
+		@products = ShopifyAPI::Product.find(:all, params: { limit: 40 })
 	end
 	def create
 		require 'httparty'

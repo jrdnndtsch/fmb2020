@@ -38,11 +38,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'shopify_app', '~> 7.2.11'
+# gem 'shopify_app', '~> 7.2.11'
+gem 'shopify_app', '~> 9.0.0'
 
 gem 'dotenv-rails'
 
 gem 'httparty'
+gem 'rails_same_site_cookie'
 
 # for image management
 gem 'paperclip'
@@ -76,7 +78,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.6'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'

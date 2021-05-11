@@ -5,8 +5,6 @@
     <% application_name = ShopifyApp.configuration.application_name %>
     <title><%= application_name %></title>
     <%= stylesheet_link_tag 'application' %>
-      <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.2.0/polaris.min.css" />
-
     <%= javascript_include_tag 'application', "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -24,14 +22,11 @@
 
     <script src="https://cdn.shopify.com/s/assets/external/app.js?<%= Time.now.strftime('%Y%m%d%H') %>"></script>
 
-    <script type="text/javascript">
-      ShopifyApp.init({
-        apiKey: "<%= ShopifyApp.configuration.api_key %>",
-        shopOrigin: "<%= "https://#{ @shop_session.url }" if @shop_session %>",
-        debug: <%= Rails.env.development? ? 'true' : 'false' %>,
-        forceRedirect: true
-      });
-    </script>
+    <%= content_tag(:div, nil, id: 'shopify-app-init', data: {
+      api_key: ShopifyApp.configuration.api_key,
+      shop_origin: ("https://#{ @shop_session.url }" if @shop_session),
+      debug: Rails.env.development?
+    } ) %>
 
     <% if content_for?(:javascript) %>
       <div id="ContentForJavascript" data-turbolinks-temporary>

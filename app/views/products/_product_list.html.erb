@@ -1,6 +1,7 @@
 <div class="Polaris-Card">
   <div class="Polaris-ResourceList__ResourceListWrapper">
     <ul class="Polaris-ResourceList" aria-live="polite">
+    <% if @products.present? %>
        <% @products.each do |product| %>
         <li class="Polaris-ResourceList__ItemWrapper">
           <div class="Polaris-ResourceList-Item"><a aria-describedby="341" aria-label="View details for Mae Jemison" class="Polaris-ResourceList-Item__Link" href="customers/341" data-polaris-unstyled="true"></a>
@@ -27,6 +28,7 @@
           </div>
         </li>
        <% end %> 
+      <% end %> 
     </ul>
   </div>
 </div>

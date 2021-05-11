@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'products' => 'products#index'
   post 'products' => 'products#create'
 
+  # get '/auth/failure', to: redirect('/auth/shopify')
 
   namespace :api, :defaults => {:format => 'json'} do
     devise_for :users

@@ -1,5 +1,5 @@
-FactoryGirl.define do
-  factory :report do
-    email "MyString"
-  end
-end
+# FactoryGirl.define do
+#   factory :report do
+#     email "MyString"
+#   end
+# end
